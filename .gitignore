@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+env/
+.env
+
+# Node
+node_modules/
+.next/
+dist/
+build/
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# Backend
+backend/__pycache__/
+*.pyc

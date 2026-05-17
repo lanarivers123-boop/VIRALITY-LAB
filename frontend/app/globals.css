@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-dark: #0A0A0B;
+  --bg-light: #FAFAF7;
+  --cyan-accent: #22D3EE;
+  --gold-accent: #C8A24B;
+}
+
+* { box-sizing: border-box; padding: 0; margin: 0; }
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: "Geist", system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: #F5F5F5;
+}
+body.light {
+  background-color: var(--bg-light);
+  color: #0A0A0B;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1a1a1b; }
+::-webkit-scrollbar-thumb { background: #22D3EE44; border-radius: 3px; }
+
+a { color: inherit; text-decoration: none; }
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideOutRight {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+.toast-enter { animation: slideInRight 0.3s ease-out; }
+.toast-exit { animation: slideOutRight 0.3s ease-in; }
+
+@keyframes brainPulse {
+  0%, 100% { opacity: 0.6; filter: drop-shadow(0 0 8px #22D3EE44); }
+  50% { opacity: 1; filter: drop-shadow(0 0 20px #22D3EE88); }
+}
+.brain-pulse { animation: brainPulse 2.5s ease-in-out infinite; }
+
+@keyframes scoreCount {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+.score-animate { animation: scoreCount 0.5s ease-out; }
+
+@keyframes staggerReveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.stagger-item { animation: staggerReveal 0.4s ease-out both; }
+.stagger-item:nth-child(1) { animation-delay: 0.1s; }
+.stagger-item:nth-child(2) { animation-delay: 0.2s; }
+.stagger-item:nth-child(3) { animation-delay: 0.3s; }
+.stagger-item:nth-child(4) { animation-delay: 0.4s; }
+.stagger-item:nth-child(5) { animation-delay: 0.5s; }

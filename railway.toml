@@ -1,7 +1,12 @@
+[build]
+  rootDirectory = "frontend"
+
+[deploy]
+  startCommand = "npm start"
+
 [railway]
-  dialect = "python"
-  buildCommand = "pip install -r requirements.txt"
-  startCommand = "uvicorn backend.main:app --host 0.0.0.0 --port $PORT"
+  dialect = "node"
+  runtime = "nodejs22"
 
 [ railway.variables ]
-  OPENAI_API_KEY = "" # set in Railway dashboard
+  OPENAI_API_KEY = ""

@@ -24,9 +24,8 @@ def get_model() -> "Any":
     global _model
     if _model is None:
         if not _HAS_TRIBE:
-            raise RuntimeError(
-                "tribev2 not installed. Run: pip install -e C:\\Users\\swast\\Desktop\\tribev2 --no-deps"
-            )
+            # Return None — caller should fall back to mock
+            return None
         _model = _TribeModel.from_pretrained("facebook/tribev2", cache_folder=_CACHE_DIR)
     return _model
 
@@ -41,6 +40,8 @@ def run_tribe_analysis(file_path: str, input_type: str) -> dict[str, Any]:
 
     try:
         model = get_model()
+        if model is None:
+            return _mock_tribe_output(file_path, input_type)
 
         if input_type == "text":
             df = model.get_events_dataframe(text_path=file_path)

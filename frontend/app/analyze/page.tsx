@@ -516,7 +516,7 @@ function AttentionTimeline({ peaks, drops }: { peaks: any[]; drops: any[] }) {
                 isPeak ? "bg-cyan-accent" : isDrop ? "bg-red-400/50" : "bg-white/15"
               }`}
               animate={{ scaleY: [0.3, 1, 0.5, 0.8, 0.3] }}
-              transition={{ duration: 1.5, delay: i * 0.03, repeat: false }}
+              transition={{ duration: 1.5, delay: i * 0.03 }}
               style={{ transformOrigin: "bottom" }}
             />
           );

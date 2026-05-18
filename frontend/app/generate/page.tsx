@@ -152,8 +152,7 @@ export default function GeneratePage() {
       formData.append("input_type", "text");
       formData.append("file", fakeFile);
 
-      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-      const tribeRes = await fetch(`${API_URL}/analyze`, { method: "POST", body: formData });
+      const tribeRes = await fetch("/api/analyze", { method: "POST", body: formData });
       if (!tribeRes.ok) throw new Error("TRIE analysis failed");
       const tribeOutput = await tribeRes.json();
 

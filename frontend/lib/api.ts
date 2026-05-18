@@ -1,5 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-
+// Local Next.js API routes (serverless on Vercel)
 // ─── Types ───────────────────────────────────────────────────────────────────────
 
 export interface TribeOutput {
@@ -20,7 +19,7 @@ export interface Interpretation {
   rewritten_script: string;
 }
 
-// ─── API client ───────────────────────────────────────────────────────────────
+// ─── API client (local Next.js serverless routes) ───────────────────────────
 
 export async function analyzeVideo(
   file: File | null
@@ -29,7 +28,7 @@ export async function analyzeVideo(
   formData.append("input_type", "video");
   if (file) formData.append("file", file);
 
-  const res = await fetch(`${API_URL}/analyze`, {
+  const res = await fetch("/api/analyze", {
     method: "POST",
     body: formData,
   });
@@ -47,7 +46,7 @@ export async function interpretScript(
   original_script: string,
   video_metadata?: Record<string, unknown>
 ): Promise<Interpretation> {
-  const res = await fetch(`${API_URL}/interpret`, {
+  const res = await fetch("/api/interpret", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -76,7 +75,7 @@ export async function generateScript(
   bold_text?: boolean,
   scrape_context?: Record<string, any>
 ): Promise<{ script: string }> {
-  const res = await fetch(`${API_URL}/generate-script`, {
+  const res = await fetch("/api/generate-script", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -107,7 +106,7 @@ export async function scrapeURL(url: string): Promise<{
   text: string;
   image_urls: string[];
 }> {
-  const res = await fetch(`${API_URL}/scrape`, {
+  const res = await fetch("/api/scrape", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ url }),
@@ -127,7 +126,7 @@ export async function analyzeImages(images: File[]): Promise<string> {
     formData.append("images", img);
   }
 
-  const res = await fetch(`${API_URL}/analyze-images`, {
+  const res = await fetch("/api/analyze-images", {
     method: "POST",
     body: formData,
   });

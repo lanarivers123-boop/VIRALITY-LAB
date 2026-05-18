@@ -43,7 +43,16 @@
       "Bash(grep -v \"^\\\\s*$\")",
       "Bash(git rm *)",
       "Bash(git commit *)",
-      "Bash(git config *)"
+      "Bash(git config *)",
+      "Bash(vercel login *)",
+      "Bash(vercel --yes)",
+      "Bash(vercel --yes --scope lanarivers123-1081s-projects)",
+      "Bash(railway login *)",
+      "Bash(git remote *)",
+      "Bash(git branch *)",
+      "Bash(git push *)",
+      "Bash(render --version)",
+      "Bash(flyctl *)"
     ]
   }
 }

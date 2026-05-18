@@ -1,0 +1,7 @@
+[railway]
+  dialect = "python"
+  buildCommand = "pip install -r requirements.txt"
+  startCommand = "uvicorn backend.main:app --host 0.0.0.0 --port $PORT"
+
+[ railway.variables ]
+  OPENAI_API_KEY = "" # set in Railway dashboard

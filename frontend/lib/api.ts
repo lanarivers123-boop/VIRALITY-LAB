@@ -1,7 +1,7 @@
 // Local Next.js API routes (serverless on Vercel)
 // OR external backend (Railway) — controlled by NEXT_PUBLIC_API_URL env var
 
-const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "").trim();
+const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "").replace(/\/$/, "");
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
 
@@ -26,8 +26,9 @@ export interface Interpretation {
 // ─── API client ───────────────────────────────────────────────────────────────
 
 async function apiFetch(path: string, opts: RequestInit = {}) {
-  const base = API_BASE || "";
-  const url = base + path;
+  const base = API_BASE;
+  // If NEXT_PUBLIC_API_URL is empty or just "/", use relative path; otherwise use as base
+  const url = base && base !== "/" ? `${base.replace(/\/$/, "")}${path}` : path;
 
   const res = await fetch(url, {
     ...opts,

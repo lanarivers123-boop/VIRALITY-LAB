@@ -9,9 +9,9 @@ import aiofiles
 from fastapi import FastAPI, Form, HTTPException, UploadFile, Body
 from fastapi.middleware.cors import CORSMiddleware
 
-from .tribev2_wrapper import run_tribe_analysis
-from .interpret import interpret as run_interpret
-from .scrape import scrape_url
+from backend.tribev2_wrapper import run_tribe_analysis
+from backend.interpret import interpret as run_interpret
+from backend.scrape import scrape_url
 
 
 TMP_DIR = Path(tempfile.gettempdir()) / "tribe_uploads"

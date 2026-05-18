@@ -10,6 +10,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       defaultTheme="dark"
       storageKey="tribe-theme"
       enableSystem={false}
+      disableTransitionOnChange
     >
       {children}
     </NextThemesProvider>

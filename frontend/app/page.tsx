@@ -9,6 +9,9 @@ export default function HomePage() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 400], [0, 80]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
 
   return (
     <div className="min-h-screen bg-bg-dark text-white">
@@ -23,7 +26,7 @@ export default function HomePage() {
         <motion.div style={{ y, opacity }} className="relative z-10 text-center max-w-4xl mx-auto">
           {/* Brain animation */}
           <div className="flex justify-center mb-12">
-            <HeroBrain />
+            {mounted ? <HeroBrain /> : <div className="w-40 h-40" />}
           </div>
 
           <motion.h1

@@ -1,7 +1,7 @@
 // Local Next.js API routes (serverless on Vercel)
 // OR external backend (Railway) — controlled by NEXT_PUBLIC_API_URL env var
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "";
+const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "").trim();
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
 

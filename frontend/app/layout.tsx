@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "TRIBE v2 Virality Lab",
   description:
     "Predict how the human brain responds to your video — before you post it. Powered by Meta's TRIBE v2 neuroscience model.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

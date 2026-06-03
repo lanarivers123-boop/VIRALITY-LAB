@@ -150,10 +150,7 @@ async def analyze_images(files: list[UploadFile] = Form(...)):
 
     import httpx
 
-    api_key = os.getenv(
-        "OPENAI_API_KEY",
-        "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",
-    )
+    api_key = os.getenv("OPENAI_API_KEY", "")
 
     # Build base64 images for GPT-4o vision
     import base64, io
@@ -213,10 +210,7 @@ async def generate_script(body: dict = Body(...)):
     """
     import httpx
 
-    MINIMAX_API_KEY = os.getenv(
-        "MINIMAX_API_KEY",
-        "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",
-    )
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
     user_prompt = body.get("user_prompt", "")
     style = body.get("style", "UGC")
@@ -303,7 +297,7 @@ Rules:
         response = await client.post(
             "https://api.openai.com/v1/chat/completions",
             headers={
-                "Authorization": f"Bearer {MINIMAX_API_KEY}",
+                "Authorization": f"Bearer {OPENAI_API_KEY}",
                 "Content-Type": "application/json",
             },
             json={

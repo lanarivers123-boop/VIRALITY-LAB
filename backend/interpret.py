@@ -8,9 +8,9 @@ from typing import Any
 
 from prompts import INTERPRETATION_USER_PROMPT, SYSTEM_PROMPT
 
-MINIMAX_API_KEY = os.getenv("MINIMAX_API_KEY", "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")
-MINIMAX_ENDPOINT = "https://api.openai.com/v1/chat/completions"
-MINIMAX_MODEL = "gpt-4o-mini"
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+OPENAI_ENDPOINT = "https://api.openai.com/v1/chat/completions"
+OPENAI_MODEL = "gpt-4o-mini"
 
 
 def format_tribe_output_for_llm(tribe_output: dict[str, Any]) -> str:
@@ -91,13 +91,13 @@ async def call_minimax_llm(messages: list[dict[str, str]]) -> str:
     """Call MiniMax API and return the raw response text."""
     async with httpx.AsyncClient(timeout=120.0) as client:
         response = await client.post(
-            MINIMAX_ENDPOINT,
+            OPENAI_ENDPOINT,
             headers={
-                "Authorization": f"Bearer {MINIMAX_API_KEY}",
+                "Authorization": f"Bearer {OPENAI_API_KEY}",
                 "Content-Type": "application/json",
             },
             json={
-                "model": MINIMAX_MODEL,
+                "model": OPENAI_MODEL,
                 "messages": messages,
                 "response_format": {"type": "json_object"},
                 "temperature": 0.3,

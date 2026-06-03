@@ -6,7 +6,7 @@ import re
 import httpx
 from typing import Any
 
-from .prompts import INTERPRETATION_USER_PROMPT, SYSTEM_PROMPT
+from prompts import INTERPRETATION_USER_PROMPT, SYSTEM_PROMPT
 
 MINIMAX_API_KEY = os.getenv("MINIMAX_API_KEY", "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")
 MINIMAX_ENDPOINT = "https://api.openai.com/v1/chat/completions"
